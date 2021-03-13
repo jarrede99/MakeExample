@@ -1,0 +1,16 @@
+#Makefile 1: basic example
+
+myProg: file0.o file1.o file2.o file3.o
+	g++ file0.o file1.o file2.o file3.o -o myProg
+
+file0.o: file0.c file1.h file2.h file3.h
+	g++ -ansi -pedantic-errors -Wall -Wconversion -c file0.c
+file1.o: file1.c file1.h
+	g++ -ansi -pedantic-errors -Wall -Wconversion -c file1.c
+file2.o: file2.c file2.h
+	g++ -ansi -pedantic-errors -Wall -Wconversion -c file2.c
+file3.o: file3.c file3.h
+	g++ -ansi -pedantic-errors -Wall -Wconversion -c file3.c
+
+# changing any ".h" file will force a recompile of the related file,
+# and therefore also a relink of myProg

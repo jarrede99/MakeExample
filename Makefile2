@@ -1,0 +1,20 @@
+#Makefile 2: introduce variables
+
+TARGET=myProg
+MODULES=file0.o file1.o file2.o file3.o
+CFLAGS=-ansi -pedantic-errors -Wall -Wconversion
+
+$(TARGET): $(MODULES)
+	g++ $(MODULES) -o $(TARGET)
+
+file0.o: file0.c file1.h file2.h file3.h
+	g++ $(CPPFLAGS) -c file0.c
+file1.o: file1.c file1.h
+	g++ $(CPPFLAGS) -c file1.c
+file2.o: file2.c file2.h
+	g++ $(CPPFLAGS) -c file2.c
+file3.o: file3.c file3.h
+	g++ $(CPPFLAGS) -c file3.c
+
+# Make sure not to have a space after the '=' in variable declarations.
+# Every character from the '=' until the end of the line is included.
